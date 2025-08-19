@@ -12,3 +12,14 @@ api_key = os.environ.get("binance_api")
 api_secret = os.environ.get("binance_secret")
 client = Client(api_key, api_secret, tld='us') # use testnet if testing
 
+def gather_nonzero_assets():
+    """Fetch portfolio balances > 0."""
+    account = client.get_account()
+    balances = account.get("balances", [])
+
+    df = pd.DataFrame(balances, columns=["asset", "free"]).set_index("asset")
+    df["free"] = df["free"].astype(float)
+
+    return {asset: amount for asset, amount in df["free"].items() if amount > 0.0}
+
+
