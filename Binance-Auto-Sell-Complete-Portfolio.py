@@ -1,17 +1,14 @@
-# import needed packages
+import os
+import pandas as pd
+from binance.client import Client
+from dotenv import load_dotenv
+from decimal import Decimal, ROUND_DOWN
 
-# open connection to binance api
+# Load environement variables
+load_dotenv()
 
-# grab current crytpo portfolio
+# Intialize Binance client
+api_key = os.environ.get("binance_api")
+api_secret = os.environ.get("binance_secret")
+client = Client(api_key, api_secret, tld='us') # use testnet if testing
 
-# ierate through current crypto portfolio
-
-# test for crypto balances over $0.00
-
-# Return tickers
-
-# sell crypto for USDT
-
-# close connection to binance api
-
-# stop Python script
