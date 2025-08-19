@@ -22,4 +22,18 @@ def gather_nonzero_assets():
 
     return {asset: amount for asset, amount in df["free"].items() if amount > 0.0}
 
+def adjust_quantity(symbol, quantity):
+    """"Adjust quantity to Binance lot size rules."""
+    info = client.get_symbol_info(symbol)
+    if not info:
+        return None
+    
+    for f in info["filters"]:
+        if f["filterType"] == "LOT_SIZE":
+            step_size = Decimal(f["stepSize"])
+            qty = (Decimal(str(quantity)) // step_size) * step_size
+            return float(qty.quantize(step_size, rounding=ROUND_DOWN))
+    
+    return float(quantity)
+
 
