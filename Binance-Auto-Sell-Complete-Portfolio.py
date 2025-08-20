@@ -36,4 +36,33 @@ def adjust_quantity(symbol, quantity):
     
     return float(quantity)
 
+def sell_all_assets():
+    """Sell all nonzero assets into USDT."""
+    assets = gather_nonzero_assets()
 
+    for asset, amount in assets.items():
+        if asset in ["USDT", "BUSD"]: #  skip stablecoins
+            continue
+
+        symbol = f"{asset}USDT"
+        try:
+            info = client.get_symbol_info(symbol)
+            if not info:
+                print(f"⚠️ No trading pair for {symbol}")
+                continue
+
+            qty = adjust_quantity(symbol, amount)
+
+            if qty <= 0:
+                print(f"⚠️ {asset}: balance too small to sell.")
+                continue
+
+            print(f"Placing market sell order: {qty} {asset} → USDT")
+            order = client.order_market_sell(symbol=symbol, quantity=qty)
+            print(f"✅ Sold {qty} {asset}: {order}")
+
+        except Exception as e:
+            print(f"⚠️ Could not sell {asset}: {e}")
+
+if __name__ == "__main__":
+    sell_all_assets()
