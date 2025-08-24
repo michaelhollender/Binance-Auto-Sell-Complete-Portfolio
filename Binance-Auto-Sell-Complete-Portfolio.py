@@ -41,7 +41,7 @@ def sell_all_assets():
     assets = gather_nonzero_assets()
 
     for asset, amount in assets.items():
-        if asset in ["USDT", "BUSD"]: #  skip stablecoins
+        if asset in ["USDT", "BUSD", "BNB"]: #  skip stablecoins
             continue
 
         symbol = f"{asset}USDT"
