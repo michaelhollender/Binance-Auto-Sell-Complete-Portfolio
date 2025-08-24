@@ -7,7 +7,7 @@ This Binance trading bot sells all of your Crypto holdings in the event that you
 
 
 ## READ BEFORE USE
-Must Store API Keys As Environment Variables or directly added your API Keys directly to this Bot
+MUST Store API Keys as Environment Variables or directly add your API keys to this bot
 To store your API keys as environment variable:
    
   On Windows: <br>
