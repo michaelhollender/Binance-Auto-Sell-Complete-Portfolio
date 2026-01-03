@@ -1,41 +1,25 @@
-# Sell All Crypto Holdings on Binance for USDT
+# Binance Auto-Sell Complete Portfolio
+**Python | REST API Integration | Algorithmic Logic | Automation**
 
-## Description
-This Binance trading bot sells all of your Crypto holdings in the event that you need to liquify your portfolio quickly.
+Automates selling all crypto holdings on Binance for USDT using Binance’s API.
 
+## 🚀 Overview
+This project demonstrates programmatic trading automation using Python and the Binance exchange API. It emphasizes API interaction, automation logic, error handling, and secure credential management.
 
+## 🧠 Key Features
+- Connects securely to the Binance API using environment-based secrets
+- Fetches and analyzes portfolio balances
+- Executes automated sell orders for all assets
+- Error handling for API failures and rate limits
 
+## 🛠️ Tech Stack
+- Python
+- Binance API (REST)
+- Environment Variables for secrets
+- Logging + error handling
 
-## READ BEFORE USE
-MUST Store API Keys as Environment Variables or directly add your API keys to this bot <br>
-To store your API keys as environment variable:
-   
-  On Windows: <br>
-  set binance_api=your_api_key_here
-  set binance_secret=your_api_secret_here
-
-
-  On Linux: <br>
-  export binance_api=your_api_key_here
-  export binance_secret=your_api_secret_here
-
-  To added your API Keys directly to this Bot(NOT RECOMMENDED!!!): <br>
-  Lines 11-12: <br>
-  api_key = your_api_key_here <br>
-  api_secret = your_api_secret_here <br><br>
-
-This bot will sell all of your Crypto Holdings on Binance unless the Coin is added to the following code, then the added Crypto will be skipped during the sale:
-
-Lines 43-45: <br>
-for asset, amount in assets.items(): <br>
-      if asset in ["USDT", "BUSD", "BNB"]: #  skip stablecoins <br>
-            continue
-
-## 💥 Disclaimer
-
-All investment strategies and investments involve risk of loss. 
-**Nothing contained in this program, scripts, code or repository should be construed as investment advice.**
-Any reference to an investment's past or potential performance is not, 
-and should not be construed as, a recommendation or as a guarantee of 
-any specific outcome or profit.
-By using this program you accept all liabilities, and that no claims can be made against the developers or others connected with the program.
+## 🧪 What I Learned
+- REST API interaction at scale
+- Secure API key handling
+- Automation logic and trade execution flow
+- Real-world data processing using Python
